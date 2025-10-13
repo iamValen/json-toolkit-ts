@@ -23,4 +23,19 @@ async function modifyJson() {
     console.log(json);
 }
 
+async function renameKey(json: any[], oldKey: string, newKey: string) {
+    json.forEach(item => {
+        if (item[oldKey]) {
+            item[newKey] = item[oldKey];
+            delete item[oldKey];
+        }
+    });
+}
+
+async function fetch(url: string) {
+    const res = await fetch(url);
+    return await res.json();
+}
+
+
 modifyJson();
